@@ -1,0 +1,18 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+django = "*"
+django-braces = "*"
+django-crispy-forms = "*"
+django-admin-bootstrapped = "*"
+environs = "*"
+pudb = "*"
+django-debug-toolbar = "*"
+
+[requires]
+python_version = "3.1"
