@@ -45,3 +45,10 @@ class Sighting(TimeStampedModel):
 
     class Meta:
         unique_together = ("superhero", "power")
+
+
+class Profile(TimeStampedModel):
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, primary_key=True)
+
+    def __str__(self):
+        return self.user
