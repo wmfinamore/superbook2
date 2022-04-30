@@ -2,7 +2,16 @@ from django.db import models
 from config import settings
 
 
-class Origin(models.Model):
+# Model Mixin
+class TimeStampedModel(models.Model):
+    created = models.DateTimeField(auto_now_add=True, editable=False)
+    modified = models.DateTimeField(auto_now=True, editable=False)
+
+    class Meta:
+        abstract = True
+
+
+class Origin(TimeStampedModel):
     superhero = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     origin = models.CharField(max_length=100)
 
@@ -10,7 +19,7 @@ class Origin(models.Model):
         return "{}'s origin: {}".format(self.superhero, self.origin)
 
 
-class Location(models.Model):
+class Location(TimeStampedModel):
     latitude = models.FloatField()
     longitude = models.FloatField()
     country = models.CharField(max_length=100)
@@ -22,7 +31,7 @@ class Location(models.Model):
         unique_together = ("latitude", "longitude")
 
 
-class Sighting(models.Model):
+class Sighting(TimeStampedModel):
     superhero = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     power = models.CharField(max_length=100)
     location = models.ForeignKey(Location, on_delete=models.CASCADE)
