@@ -1,6 +1,7 @@
 from django.db import models
 from book.models import TimeStampedModel
 from config import settings
+from .services import SuperHeroWebAPI
 
 
 class BaseProfile(TimeStampedModel):
@@ -38,3 +39,6 @@ class Profile(SuperHeroProfile, OrdinaryProfile, BaseProfile):
 
     def __str__(self):
         return self.user
+
+    def is_superhero(self):
+        return SuperHeroWebAPI.is_hero(self.user.username)
