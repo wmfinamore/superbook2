@@ -3,6 +3,7 @@ from book.models import TimeStampedModel
 from config import settings
 from .services import SuperHeroWebAPI
 import datetime
+from django.utils.functional import cached_property
 
 
 class BaseProfile(TimeStampedModel):
@@ -30,6 +31,10 @@ class BaseProfile(TimeStampedModel):
             )
         else:
             return 0
+
+    # @cached_property
+    # def full_name(self):
+    #     return self.user.get_full_name()
 
 
 class SuperHeroProfile(models.Model):
