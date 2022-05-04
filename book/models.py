@@ -45,3 +45,7 @@ class Sighting(TimeStampedModel):
 
     class Meta:
         unique_together = ("superhero", "power")
+
+
+class Post(models.Model):
+    pass
