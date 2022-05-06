@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     # local
     'book',
     'profiles.apps.ProfilesConfig',
+    'posts',
 ]
 
 MIDDLEWARE = [
