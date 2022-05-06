@@ -45,7 +45,7 @@ class SuperHeroProfile(models.Model):
 
 
 class OrdinaryProfile(models.Model):
-    address = models.CharField(max_length=200, blank=True, Null=True)
+    address = models.CharField(max_length=200, blank=True, null=True)
 
     class Meta:
         abstract = True
